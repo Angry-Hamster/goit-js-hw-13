@@ -14,8 +14,8 @@ let countImage = 0
 refs.ul.insertAdjacentElement('afterend', loadMoreBtn)
 refs.input.addEventListener('input', debounce((event)=>{
   refs.ul.innerHTML = ''
-  let perPage = refs.countSpan.textContent
-  countImage = Number(perPage)
+  let perPage = Number(refs.countSpan.textContent)
+  countImage = perPage
   apiServsce.getImages(event.target.value, perPage)
   .then(data => {insertElements(data.hits, imgTemplate, refs.ul)})
   query = event.target.value
@@ -26,6 +26,10 @@ refs.input.addEventListener('input', debounce((event)=>{
 
 loadMoreBtn.addEventListener('click', () => {
   refs.ul.innerHTML = ''
+  let perPage = Number(refs.countSpan.textContent)
+  countImage += perPage
+  // console.log('add photo ',countImage);
+  // console.log('add to count ',perPage);
   apiServsce.getImages(query, countImage)
   .then(data => {insertElements(data.hits, imgTemplate, refs.ul)})
 })
