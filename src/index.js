@@ -15,7 +15,7 @@ refs.ul.insertAdjacentElement('afterend', loadMoreBtn)
 refs.input.addEventListener('input', debounce((event)=>{
   refs.ul.innerHTML = ''
   let perPage = refs.countSpan.textContent
-  countImage += Number(perPage)
+  countImage = Number(perPage)
   apiServsce.getImages(event.target.value, perPage)
   .then(data => {insertElements(data.hits, imgTemplate, refs.ul)})
   query = event.target.value
@@ -28,6 +28,7 @@ loadMoreBtn.addEventListener('click', () => {
   refs.ul.innerHTML = ''
   let perPage = refs.countSpan.textContent
   countImage += Number(perPage)
+  console.log(countImage, perPage);
   apiServsce.getImages(query, countImage)
   .then(data => {insertElements(data.hits, imgTemplate, refs.ul)})
 })
