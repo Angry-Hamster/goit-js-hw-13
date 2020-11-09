@@ -28,7 +28,6 @@ loadMoreBtn.addEventListener('click', () => {
   refs.ul.innerHTML = ''
   let perPage = refs.countSpan.textContent
   countImage += Number(perPage)
-  console.log(countImage, perPage);
   apiServsce.getImages(query, countImage)
   .then(data => {insertElements(data.hits, imgTemplate, refs.ul)})
 })
