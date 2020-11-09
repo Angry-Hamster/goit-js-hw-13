@@ -1,1 +1,1 @@
-body{background-color:#000;color:wheat}
+*{margin:5px;padding:0}ul{list-style:none}body{background-color:#000;color:wheat}.gallery{flex-flow:row wrap}.gallery,.gallery li,.stats{display:flex;justify-content:space-evenly}.search-form input{outline:none}.search-form button{width:15px}.gallery li{flex-flow:column;align-items:center;border:1px solid wheat;padding:20px;width:270px;height:150}.isHiden{display:none}.loadMoreBtn{display:block;margin:50px auto;background-color:#000;color:wheat;border:2px solid wheat;padding:8px;border-radius:5px}
