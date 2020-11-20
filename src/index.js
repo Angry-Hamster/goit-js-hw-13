@@ -23,6 +23,13 @@ refs.input.addEventListener('input', debounce((event)=>{
   refs.input.value = ''
   loadMoreBtn.classList.remove('isHiden')
   loadMoreBtn.classList.add('loadMoreBtn')
+
+
+
+  setTimeout(() =>{
+    var elmnt = document.getElementById("nav");
+    elmnt.scrollIntoView({block: "center", behavior: "smooth"})
+  }, 4000)
 }, 1000))
 
 
