@@ -10,13 +10,14 @@ loadMoreBtn.textContent = 'load mora...'
 loadMoreBtn.classList.add('isHiden')
 
 let query
-let countImage = 0
+let page = 1
+
 refs.ul.insertAdjacentElement('afterend', loadMoreBtn)
 refs.input.addEventListener('input', debounce((event)=>{
   refs.ul.innerHTML = ''
   let perPage = Number(refs.countSpan.textContent)
-  countImage = perPage
-  apiServsce.getImages(event.target.value, perPage)
+  page = 1
+  apiServsce.getImages(event.target.value, perPage, page)
   .then(data => {insertElements(data.hits, imgTemplate, refs.ul)})
   query = event.target.value
   refs.input.value = ''
@@ -24,13 +25,11 @@ refs.input.addEventListener('input', debounce((event)=>{
   loadMoreBtn.classList.add('loadMoreBtn')
 }, 1000))
 
+
 loadMoreBtn.addEventListener('click', () => {
-  refs.ul.innerHTML = ''
   let perPage = Number(refs.countSpan.textContent)
-  countImage += perPage
-  // console.log('add photo ',countImage);
-  // console.log('add to count ',perPage);
-  apiServsce.getImages(query, countImage)
+  page++
+  apiServsce.getImages(query, perPage, page)
   .then(data => {insertElements(data.hits, imgTemplate, refs.ul)})
 })
 
